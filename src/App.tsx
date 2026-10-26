@@ -3,6 +3,7 @@ import {
   BookOpen,
   Compass,
   Cpu,
+  Palette,
   RotateCcw,
   Shield,
   Swords,
@@ -25,10 +26,15 @@ import { WarTableView } from './components/WarTableView';
 import { GreathelmArenaView } from './components/GreathelmArenaView';
 import { McpDirectorView } from './components/McpDirectorView';
 import { GddView } from './components/GddView';
+import { ConceptGalleryView } from './components/ConceptGalleryView';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<
-    'WAR_TABLE' | 'GREATHELM_ARENA' | 'MCP_DIRECTOR' | 'GDD'
+    | 'WAR_TABLE'
+    | 'GREATHELM_ARENA'
+    | 'MCP_DIRECTOR'
+    | 'GDD'
+    | 'CONCEPT_GALLERY'
   >('WAR_TABLE');
 
   const [world, setWorld] = useState<WorldState>(() =>
@@ -245,6 +251,17 @@ export function App() {
             </button>
 
             <button
+              onClick={() => setActiveTab('CONCEPT_GALLERY')}
+              className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-xs font-bold transition cursor-pointer ${
+                activeTab === 'CONCEPT_GALLERY'
+                  ? 'bg-amber-500 text-stone-950 shadow'
+                  : 'bg-stone-900 text-amber-300 hover:bg-stone-800 border border-amber-500/40'
+              }`}
+            >
+              <Palette className="h-3.5 w-3.5" /> 5. Target Art &amp; Vision
+            </button>
+
+            <button
               onClick={handleResetDemo}
               className="inline-flex items-center gap-1 rounded-lg bg-stone-900 hover:bg-stone-800 border border-stone-800 px-2.5 py-2 text-xs text-stone-400 hover:text-stone-200 transition cursor-pointer"
               title="Reset Campaign State to Day 14"
@@ -291,6 +308,10 @@ export function App() {
         )}
 
         {activeTab === 'GDD' && <GddView />}
+
+        {activeTab === 'CONCEPT_GALLERY' && (
+          <ConceptGalleryView onNavigateTab={(tab) => setActiveTab(tab)} />
+        )}
       </main>
     </div>
   );

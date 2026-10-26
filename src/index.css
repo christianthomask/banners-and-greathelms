@@ -1,43 +1,121 @@
 @import "tailwindcss";
 
-@layer components {
-  /* Aged Medieval Broadsheet & Ledger Parchment */
-  .parchment-sheet {
-    background:
-      radial-gradient(circle at 50% 35%, rgba(246, 233, 201, 0.98), rgba(221, 198, 152, 0.96) 72%, rgba(186, 156, 106, 0.98) 100%);
-    color: #261c12;
-    box-shadow:
-      inset 0 0 32px rgba(92, 62, 26, 0.42),
-      0 10px 28px rgba(0, 0, 0, 0.65);
-    border: 2px solid #8c6d43;
+@layer base {
+  body {
+    background-color: #0e0b08;
+    background-image:
+      radial-gradient(ellipse at 50% 15%, rgba(245, 158, 11, 0.09) 0%, rgba(10, 8, 6, 0.72) 65%, rgba(6, 5, 4, 0.92) 100%),
+      url('/assets/bg-war-table-oak.webp');
+    background-size: cover, 512px 341px;
+    background-attachment: fixed, scroll;
+    color: #e7e0d0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
-  /* Forged Iron & Brass Strategy Frame (Stronghold / AoE2 Style) */
-  .forged-iron-frame {
-    background:
-      linear-gradient(180deg, #23201c 0%, #151310 50%, #1c1915 100%);
-    border: 2px solid #574a36;
-    box-shadow:
-      inset 0 1px 0 rgba(251, 191, 36, 0.22),
-      inset 0 0 22px rgba(0, 0, 0, 0.8),
-      0 10px 24px rgba(0, 0, 0, 0.65);
+  h1, h2, h3, h4, .font-serif-medieval {
+    font-family: 'Cinzel', Georgia, serif;
   }
+}
 
-  /* Carved Dark Oak Console Panel */
-  .carved-oak-panel {
-    background:
-      linear-gradient(180deg, #271d14 0%, #19120c 55%, #120d08 100%);
-    border: 2px solid #6b5335;
-    box-shadow:
-      inset 0 1px 0 rgba(253, 224, 71, 0.18),
-      inset 0 0 18px rgba(0, 0, 0, 0.85),
-      0 8px 20px rgba(0, 0, 0, 0.6);
-  }
+/* ============================================================================
+ * DIEGETIC 9-SLICE UI FRAME ASSETS (STRONGHOLD / AOE2 / BATTLE BROTHERS)
+ * Replaces flat CSS borders with painted 9-slice iron, oak & deckle parchment
+ * ============================================================================ */
 
-  /* Cast-Iron Mechanical Toggle Bar */
-  .cast-iron-slot {
-    background: linear-gradient(180deg, #110f0d 0%, #1f1c18 100%);
-    border: 1.5px solid #4a3f31;
-    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.9);
-  }
+.forged-iron-frame {
+  position: relative;
+  background-color: #18120d;
+  border-style: solid;
+  border-width: 24px;
+  border-image-source: url('/assets/frame-forged-iron-9slice.webp');
+  border-image-slice: 128 fill;
+  border-image-width: 26px;
+  border-image-outset: 0px;
+  border-image-repeat: stretch;
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.88),
+    0 4px 12px rgba(0, 0, 0, 0.75);
+}
+
+.carved-oak-panel {
+  position: relative;
+  background-color: #1c140e;
+  border-style: solid;
+  border-width: 20px;
+  border-image-source: url('/assets/frame-forged-iron-9slice.webp');
+  border-image-slice: 128 fill;
+  border-image-width: 22px;
+  border-image-outset: 0px;
+  border-image-repeat: stretch;
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.82),
+    inset 0 0 24px rgba(0, 0, 0, 0.65);
+}
+
+.parchment-sheet {
+  position: relative;
+  color: #261b10;
+  background-color: #e8d8b8;
+  border-style: solid;
+  border-width: 22px;
+  border-image-source: url('/assets/frame-parchment-deckle-9slice.webp');
+  border-image-slice: 128 fill;
+  border-image-width: 24px;
+  border-image-outset: 0px;
+  border-image-repeat: stretch;
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.78),
+    0 2px 6px rgba(0, 0, 0, 0.55);
+}
+
+/* Hollow 9-slice Forged-Iron & Gothic-Oak Picture Frame Overlay for Widescreen 2.5D Canvases */
+.viewport-iron-frame-overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  border-style: solid;
+  border-width: 28px;
+  border-image-source: url('/assets/frame-hollow-viewport-9slice.webp');
+  border-image-slice: 128;
+  border-image-width: 30px;
+  border-image-outset: 0px;
+  border-image-repeat: stretch;
+  box-shadow: inset 0 0 42px rgba(0, 0, 0, 0.85);
+}
+
+.cast-iron-slot {
+  background: linear-gradient(180deg, #0d0b09 0%, #171310 100%);
+  border: 2px solid #4a3b2a;
+  box-shadow:
+    inset 0 3px 7px rgba(0, 0, 0, 0.92),
+    0 1px 0 rgba(251, 191, 36, 0.18);
+}
+
+.wax-seal-btn {
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+.wax-seal-btn:hover {
+  transform: scale(1.04) translateY(-1px);
+  filter: brightness(1.08);
+}
+.wax-seal-btn:active {
+  transform: scale(0.98);
+}
+
+/* Custom Medieval Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #120e0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #57442d;
+  border-radius: 4px;
+  border: 1px solid #856843;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #785d3c;
 }

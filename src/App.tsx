@@ -281,7 +281,7 @@ export function App() {
     <div className="min-h-screen bg-[#0d0c0a] text-[#e7e0d0] flex flex-col">
       {/* TOP FORGED-IRON & CARVED-OAK NAVIGATION HEADER */}
       <header className="sticky top-0 z-30 border-b-2 border-amber-500/30 bg-[#120f0b]/95 backdrop-blur shadow-2xl">
-        <div className="mx-auto max-w-7xl px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+        <div className="mx-auto max-w-[1840px] px-3 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-red-800 text-stone-950 shadow-lg border border-amber-300/60">
               <Shield className="h-5 w-5 stroke-[2.5]" />
@@ -417,8 +417,8 @@ export function App() {
         </div>
       </header>
 
-      {/* MAIN CONTENT CONTAINER */}
-      <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6">
+      {/* MAIN WIDESCREEN LANDSCAPE CONTENT CONTAINER */}
+      <main className="mx-auto w-full max-w-[1840px] flex-1 px-3 sm:px-6 py-5">
         {activeTab === 'WAR_TABLE' && (
           <WarTableView
             world={world}

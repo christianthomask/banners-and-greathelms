@@ -18,7 +18,7 @@ interface ConceptSlide {
   highlights: string[];
   mapsToTab: {
     label: string;
-    tabKey: 'WAR_TABLE' | 'GREATHELM_ARENA' | 'MCP_DIRECTOR' | 'GDD';
+    tabKey: 'WAR_TABLE' | 'GREATHELM_ARENA' | 'PAVILION' | 'MCP_DIRECTOR' | 'GDD';
   };
 }
 
@@ -91,15 +91,15 @@ const CONCEPT_SLIDES: ConceptSlide[] = [
       'Parchment Chivalric Ransom & Blood Vendetta Ledger on bottom-right showing a captured rival knight held for 180 Gold Crowns.',
     ],
     mapsToTab: {
-      label: 'Edit Doctrines & View Ransom Rolls →',
-      tabKey: 'GREATHELM_ARENA',
+      label: 'Open Playable Pavilion, Paperdoll & Ransom Ledger →',
+      tabKey: 'PAVILION',
     },
   },
 ];
 
 interface ConceptGalleryViewProps {
   onNavigateTab: (
-    tab: 'WAR_TABLE' | 'GREATHELM_ARENA' | 'MCP_DIRECTOR' | 'GDD'
+    tab: 'WAR_TABLE' | 'GREATHELM_ARENA' | 'PAVILION' | 'MCP_DIRECTOR' | 'GDD'
   ) => void;
 }
 
